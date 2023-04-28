@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Test on IQ</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      href="./fonts/fontawesome-free-5.15.3-web/fontawesome.15.3-web/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <button class="btn-menu" type="btn" onclick="togglePanel(true)">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="survey-title-wr">
+          <img class="survey-img" src="./img/brain.png" />
+          <h3 class="survey-title yellow" id="survey-title">
+            тест на определение IQ
+          </h3>
+        </div>
+
+        <nav class="panel" id="panel">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="#" onClick="openView('main-screen')" class="nav-link"
+                >Главная</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" onClick="openView('about')"
+                >Информация о тесте</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" onClick="showTest()" class="nav-link">пройти тест</a>
+            </li>
+          </ul>
+          <span class="close" onclick="togglePanel()">
+            <img class="close-img" src="./img/x.png" />
+          </span>
+        </nav>
+      </header>
+
+      <div id="home">
+        <main class="main container">
+          <div id="main-screen"></div>
+          <h4 class="h4">Пройдите точный и быстрый</h4>
+          <h1 class="h1 yellow">
+            тест на <br />
+            определение IQ
+          </h1>
+          <img class="main-img" src="./img/brain.png" />
+          <div class="test-btn">
+            <button type="button" onClick="showTest()" class="btn">
+              пройти тест
+            </button>
+          </div>
+          <p class="test-about">
+            <span class="yellow"
+              >и получите рекомендации по развитию своего интеллекта </span
+            ><br />
+            и улучшению финансового благосостояния и личной жизни
+          </p>
+
+          <div>
+            <button class="btn-arrow">
+              <i class="fas fa-arrow-up"></i>
+            </button>
+            <p class="more">Подробнее</p>
+          </div>
+        </main>
+        <section class="info container">
+          <div id="about"></div>
+          <p class="info-description">
+            Профессиональный IQ-тест позволяет не только определить коэффициент
+            вашего интеллекта, но и выработать список рекомендаций для повышения
+            этого показателя.
+          </p>
+        </section>
+        <section class="activity container">
+          <p class="activity-result">
+            Также по результатам теста
+            <span class="bold uppercase">вы получите</span> подробные
+            <span class="bold uppercase">советы</span> по определению наиболее
+            перспективной <span class="bold uppercase">для вашего типа</span>
+            <span class="bold">интеллекта</span>
+            <span class="bold uppercase">сферы деятельности,</span>
+            которая принесет вам скорейший финансовый результат.
+          </p>
+          <img class="activity-img" src="./img/sphere.png" />
+          <div class="test-btn">
+            <button type="buttom" onClick="showTest()" class="btn">
+              пpойти тест
+            </button>
+          </div>
+        </section>
+        <section class="ending container lightning-ending">
+          <p class="ending-time">
+            Прохождение теста займет у вас не более
+            <span class="yellow">12 минут</span>, а его результаты вы сможете
+            <span class="yellow">использовать всю жизнь.</span>
+          </p>
+          <p class="ending-detail">
+            Профессиональная интерпретация и детально
+            <span class="bold">проработанные рекомендации</span> позволят вам
+            качественно
+            <span class="bold">изменить все аспекты своей жизни:</span> от
+            финансового до любовного.
+          </p>
+          <div class="test-btn">
+            <button onClick="showTest()" class="btn btn-transparent">
+              пpойти тест
+            </button>
+          </div>
+        </section>
+        <footer class="footer container">
+          <p class="footer-p">© 2019</p>
+        </footer>
+      </div>
+      <!--#home-->
+
+      <section
+        class="testcontainer"
+        id="test-container"
+        style="display: none"
+        ;
+      >
+        <div id="test-anchor"></div>
+        <div class="progress">
+          <div
+            class="progress-value"
+            id="test-progress"
+            style="width: 65%"
+          ></div>
+        </div>
+
+        <div class="testing" id="question-container"></div>
+        <div class="test-btn">
+          <button
+            type="button"
+            id="go-next"
+            class="btn"
+            disabled
+            onclick="goNext()"
+          >
+            далее
+          </button>
+        </div>
+      </section>
+
+      <section
+        id="test-results"
+        style="display: none"
+        class="testcontainer lightning"
+      >
+        <p class="test-about uppercase">Ваш результат рассчитан:</p>
+        <div class="result-container">
+          <p class="result-about">
+            <span style="text-decoration: underline">Вы относитесь к 3%</span>
+            респондентов, чей уровень интеллекта более чем на 15 пунктов
+            отличается от среднего в большую или меньшую сторону!
+          </p>
+          <p class="result-get">Скорее получите свой результат</p>
+          <p class="test-protection">
+            В целях защиты персональных данных результат теста, их подробная
+            интерпретация и рекомендации доступны в виде голосового сообщения по
+            звонку с вашего мобильного телефон
+          </p>
+        </div>
+        <div class="timer">
+          <p class="title-timer">Звоните скорее, запись доступна всего</p>
+          <div class="timercontainer timer10">
+            <span
+              class="timer10"
+              style="padding: 0px 10px 0"
+              id="ten-countdown"
+            ></span>
+          </div>
+        </div>
+        <button class="call-result" onClick="sendResult(this)">
+          <img class="img-call" src="./img/call.png" alt="call" />
+          <p class="title-call">Позвонить и прослушать результат</p>
+        </button>
+        <div id="test-response"></div>
+        <p class="title-last">
+          TERMENI SI CONDITII: ACESTA ESTE UN SERVICIU <br />DE DIVERTISMENT.
+          PRIN FOLOSIREA LUI<br />
+          DECLARATI CA AVETI 18 ANI IMPLINITI,
+        </p>
+      </section>
+    </div>
+    <!-- .wrapper -->
+    <script src="js/app.js"></script>
+    <script src="js/survey.js"></script>
+  </body>
+</html>
